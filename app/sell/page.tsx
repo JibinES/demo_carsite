@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Card from '@/components/ui/Card'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 type FormData = {
   make: string
@@ -62,9 +63,11 @@ export default function SellYourCarPage() {
             <p className="text-neutral-medium-gray text-lg mb-8">
               Your listing has been submitted successfully. Our team will review it and get back to you within 2 hours.
             </p>
-            <Button href="/" variant="primary">
-              Back to Homepage
-            </Button>
+            <Link href="/">
+              <Button variant="primary">
+                Back to Homepage
+              </Button>
+            </Link>
           </Card>
         </div>
       </div>
