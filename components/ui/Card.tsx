@@ -32,20 +32,31 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       large: 'p-8',
     }
 
-    const MotionCard = hover ? motion.div : 'div'
+    if (hover) {
+      return (
+        <motion.div
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div
+            ref={ref}
+            className={`${baseStyles} ${shadowStyle} ${hoverStyle} ${paddingStyles[padding]} ${className}`}
+            {...props}
+          >
+            {children}
+          </div>
+        </motion.div>
+      )
+    }
 
     return (
-      <MotionCard
+      <div
         ref={ref}
         className={`${baseStyles} ${shadowStyle} ${hoverStyle} ${paddingStyles[padding]} ${className}`}
-        {...(hover && {
-          whileHover: { y: -4 },
-          transition: { duration: 0.2 },
-        })}
         {...props}
       >
         {children}
-      </MotionCard>
+      </div>
     )
   }
 )
