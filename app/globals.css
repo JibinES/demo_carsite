@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-neutral-light-gray;
+  }
+
+  body {
+    @apply bg-neutral-white text-neutral-black antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+
+  h1 {
+    @apply text-h1-mobile md:text-h1-desktop;
+  }
+
+  h2 {
+    @apply text-h2-mobile md:text-h2-desktop;
+  }
+
+  h3 {
+    @apply text-h3-mobile md:text-h3-desktop;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-red text-neutral-white px-6 py-3 rounded-button font-semibold
+           hover:bg-primary-dark-red transition-all duration-standard
+           hover:scale-[1.02] focus:ring-2 focus:ring-primary-red focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-black text-neutral-white px-6 py-3 rounded-button font-semibold
+           hover:bg-neutral-dark-gray transition-all duration-standard
+           hover:scale-[1.02] focus:ring-2 focus:ring-neutral-black focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-red text-primary-red px-6 py-3 rounded-button
+           font-semibold hover:bg-primary-red hover:text-neutral-white
+           transition-all duration-standard focus:ring-2 focus:ring-primary-red focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-neutral-white rounded-card shadow-card transition-all duration-standard;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .input-field {
+    @apply h-11 border border-neutral-light-gray rounded-lg px-4
+           focus:border-primary-red focus:ring-2 focus:ring-primary-red
+           transition-all duration-fast outline-none;
+  }
+
+  .badge {
+    @apply inline-block px-2 py-1 text-xs font-bold uppercase rounded-badge;
+  }
+
+  .badge-red {
+    @apply badge bg-primary-red text-neutral-white;
+  }
+
+  .badge-black {
+    @apply badge bg-neutral-black text-neutral-white;
+  }
+
+  .badge-gray {
+    @apply badge bg-neutral-light-gray text-neutral-dark-gray;
+  }
+}
+
+@layer utilities {
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-primary-red to-primary-dark-red bg-clip-text text-transparent;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
