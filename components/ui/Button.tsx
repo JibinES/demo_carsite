@@ -1,14 +1,15 @@
 'use client'
 
-import { ButtonHTMLAttributes, forwardRef } from 'react'
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
 import { motion, HTMLMotionProps } from 'framer-motion'
 import { Loader2 } from 'lucide-react'
 
-export interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'ref'> {
+export interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'ref' | 'children'> {
   variant?: 'primary' | 'secondary' | 'outline'
   size?: 'small' | 'medium' | 'large'
   isLoading?: boolean
   fullWidth?: boolean
+  children?: ReactNode
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
