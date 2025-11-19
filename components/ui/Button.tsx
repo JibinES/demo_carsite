@@ -1,15 +1,14 @@
 'use client'
 
-import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
-import { motion, HTMLMotionProps } from 'framer-motion'
+import { ButtonHTMLAttributes, forwardRef } from 'react'
+import { motion } from 'framer-motion'
 import { Loader2 } from 'lucide-react'
 
-export interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'ref' | 'children'> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline'
   size?: 'small' | 'medium' | 'large'
   isLoading?: boolean
   fullWidth?: boolean
-  children?: ReactNode
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -43,17 +42,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const widthStyle = fullWidth ? 'w-full' : ''
 
     return (
-      <motion.button
-        ref={ref}
-        className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyle} ${className}`}
-        disabled={disabled || isLoading}
+      <motion.div
         whileHover={!disabled && !isLoading ? { scale: 1.02 } : {}}
         whileTap={!disabled && !isLoading ? { scale: 0.98 } : {}}
-        {...props}
+        className="inline-block"
       >
-        {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
-        {children as ReactNode}
-      </motion.button>
+        <button
+          ref={ref}
+          className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyle} ${className}`}
+          disabled={disabled || isLoading}
+          {...props}
+        >
+          {isLoading && <Loader2 className="w-4 h-4 animate-spin" />}
+          {children}
+        </button>
+      </motion.div>
     )
   }
 )
